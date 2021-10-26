@@ -19,6 +19,8 @@ set(PROJECT_SOURCES
         ctmainwindow.cpp
         ctmainwindow.h
         ctmainwindow.ui
+        databaseconnector.h
+        databaseconnector.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
