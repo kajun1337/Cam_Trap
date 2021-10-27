@@ -14,6 +14,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
+find_package(Qt6 COMPONENTS Sql REQUIRED)
+
+
 set(PROJECT_SOURCES
         main.cpp
         ctmainwindow.cpp
@@ -21,6 +24,7 @@ set(PROJECT_SOURCES
         ctmainwindow.ui
         databaseconnector.h
         databaseconnector.cpp
+        CamTrap.db
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -47,6 +51,8 @@ else()
 endif()
 
 target_link_libraries(Cam_Trap PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+
+target_link_libraries(Cam_Trap PRIVATE Qt6::Sql)
 
 set_target_properties(Cam_Trap PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
