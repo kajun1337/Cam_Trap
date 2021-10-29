@@ -13,10 +13,15 @@ class DatabaseConnector : public QObject
 {
     Q_OBJECT
 public:
-    ~DatabaseConnector();
     explicit DatabaseConnector(QObject *parent = nullptr);
+    ~DatabaseConnector();
+    void checkDBConnection(QSqlDatabase *db);
 
 signals:
+
+private:
+    QSqlDatabase CamTrapDB;
+    QMessageBox msgBox;
 
 };
 

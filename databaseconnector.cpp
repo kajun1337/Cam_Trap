@@ -1,26 +1,28 @@
 #include "databaseconnector.h"
 
-DatabaseConnector::~DatabaseConnector()
-{
-    qInfo()<<"obje silindi"<<this;
-}
-
 DatabaseConnector::DatabaseConnector(QObject *parent) : QObject(parent)
 {
-    QSqlDatabase CamTrapDB=QSqlDatabase::addDatabase("QSQLITE");
+    CamTrapDB = QSqlDatabase::addDatabase("QSQLITE");
     CamTrapDB.setDatabaseName("CamTrap.db");
+    checkDBConnection(&CamTrapDB);
+}
 
 
+DatabaseConnector::~DatabaseConnector()
+{
+    qInfo() << "Deconstructed to DatabaseConnector" << this;
+}
 
-    if(!CamTrapDB.open())
+void DatabaseConnector::checkDBConnection(QSqlDatabase *db)
+{
+    if(!db->open())
     {
-      qInfo()<<"baglanmadı"<<this;
-
+      msgBox.setText("FAILED");
+      msgBox.setInformativeText("Connection FAILED to Database");
+      msgBox.exec();
     }
     else
     {
-      qInfo()<<"baglandı"<<this;
+      qInfo() << "Connected to Database" << this;
     }
-
-
 }

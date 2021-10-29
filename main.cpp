@@ -1,15 +1,18 @@
+#include "databaseconnector.h"
 #include "ctmainwindow.h"
+#include "imageform.h"
 
 #include <QApplication>
-#include"databaseconnector.h"
+#include <QtWidgets>
+#include <QSharedPointer>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     CTMainWindow w;
-    w.show();
+    DatabaseConnector *connection = new DatabaseConnector();
 
-    DatabaseConnector* connection=new DatabaseConnector();
+    w.show();
 
     delete connection;
 

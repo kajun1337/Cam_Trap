@@ -18,10 +18,14 @@ find_package(Qt6 COMPONENTS Sql REQUIRED)
 
 
 set(PROJECT_SOURCES
+        icons_qrc.qrc
         main.cpp
         ctmainwindow.cpp
         ctmainwindow.h
         ctmainwindow.ui
+        imageform.cpp
+        imageform.h
+        imageform.ui
         databaseconnector.h
         databaseconnector.cpp
         CamTrap.db
