@@ -28,7 +28,7 @@ set(PROJECT_SOURCES
         imageform.ui
         databaseconnector.h
         databaseconnector.cpp
-        CamTrap.db
+        CamTrapDB.db
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

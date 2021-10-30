@@ -11,9 +11,8 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     CTMainWindow w;
     DatabaseConnector *connection = new DatabaseConnector();
-
     w.show();
-
+    connection->selectDB();
     delete connection;
 
     return a.exec();
