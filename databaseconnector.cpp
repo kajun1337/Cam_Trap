@@ -67,6 +67,34 @@ QString DatabaseConnector::setQuery(QString query_init, QMap<QString, QString> s
     return query_init;
 }
 
+QList<QString> DatabaseConnector::selectAllDB(QString table, QString query_c, unsigned short int tblcolumn)
+{
+    QList<QString> values;
+    QString value = "";
+    QSqlQuery *qry = new QSqlQuery(CamTrapDB);
+    QString query = "SELECT * FROM " + table + query_c;
+    *qry = CamTrapDB.exec(query);
+
+    if(!qry->lastError().isValid())
+    {
+        while(qry->next())
+        {
+            for(unsigned short int i = 0; i < tblcolumn; i++)
+            {
+                    value = qry->value(i).toString();
+                    values << value;
+            }
+        }
+    }
+    else
+        QMessageBox::critical(nullptr, "VERI TABANI HATASI", qry->lastError().text());
+
+    delete qry;
+    qry = nullptr;
+
+    return values;
+}
+
 QList<QString> DatabaseConnector::selectDB(QString table, unsigned short int qrycolumn, QString query_c)
 {
     QList<QString> values;

@@ -22,7 +22,7 @@ class ImageForm : public QWidget
     Q_OBJECT
 
 public:
-    explicit ImageForm(QWidget *parent = nullptr, QString imageid = "");
+    explicit ImageForm(QWidget *parent = nullptr, QList<QString> photo_info = QList<QString> ());
     ~ImageForm();
 
 private slots:
@@ -32,7 +32,7 @@ private slots:
 
 private:
     Ui::ImageForm *ui;
-    QString id;
+    QList<QString> photo_infos;
 
 private:
     void setCentralWidget();

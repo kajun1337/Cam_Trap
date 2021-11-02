@@ -85,7 +85,9 @@ void CTMainWindow::setGridLayout()
         {
             if(photo_info.length() > c)
             {
-                ImageForm *imageui = new ImageForm(nullptr, photo_info.at(c));
+                QList<QString> photo_infos = db->selectAllDB("Fotograflar", " WHERE FotografID='" +
+                                                             photo_info.at(c) + "'", 8);
+                ImageForm *imageui = new ImageForm(nullptr, photo_infos);
                 ui->gridLayout->addWidget(imageui, i, j);
                 c++;
             }

@@ -1,11 +1,11 @@
 #include "imageform.h"
 #include "ui_imageform.h"
 
-ImageForm::ImageForm(QWidget *parent, QString imageid) :
+ImageForm::ImageForm(QWidget *parent,  QList<QString> photo_info) :
     QWidget(parent),
     ui(new Ui::ImageForm)
 {
-    id = imageid;
+    photo_infos = photo_info;
     ui->setupUi(this);
     setCentralWidget();
 }

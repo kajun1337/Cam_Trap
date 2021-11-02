@@ -18,6 +18,7 @@ class DatabaseConnector : public QObject
 public:
     explicit DatabaseConnector(QObject *parent = nullptr);
     ~DatabaseConnector();
+    QList<QString> selectAllDB(QString table = "", QString query_c = "", unsigned short int tblcolumn = 0);
     QList<QString> selectDB(QString table = "", unsigned short int qrycolumn = 0, QString query_c = "");
     QList<QString> whereDB( QString table = "", unsigned short int qrycolumn = 0, QMap<QString, QString> where_map = QMap<QString, QString> {});
     bool insertDB(QString table = "", QList<QString> columnlist = QList<QString> (), QList<QString> valuelist = QList<QString> ());
