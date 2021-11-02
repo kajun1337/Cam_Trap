@@ -8,6 +8,8 @@
 #include<QtSql/QSqlQuery>
 #include <QtSql/QSqlError>
 #include<QMessageBox>
+#include <QList>
+#include <QMap>
 #include<QtDebug>
 
 class DatabaseConnector : public QObject
@@ -16,16 +18,21 @@ class DatabaseConnector : public QObject
 public:
     explicit DatabaseConnector(QObject *parent = nullptr);
     ~DatabaseConnector();
-    void selectDB();
-    void insertDB();
-    void updateDB();
+    QList<QString> selectDB(QString table = "", unsigned short int qrycolumn = 0, QString query_c = "");
+    QList<QString> whereDB( QString table = "", unsigned short int qrycolumn = 0, QMap<QString, QString> where_map = QMap<QString, QString> {});
+    bool insertDB(QString table = "", QList<QString> columnlist = QList<QString> (), QList<QString> valuelist = QList<QString> ());
+    bool updateDB(QString table = "", QMap<QString, QString> set_map = QMap<QString, QString> {}, QMap<QString, QString> where_map = QMap<QString, QString> {});
+    bool deleteDB(QString table = "", QString column = "", QString item = "");
 
 signals:
 
 private:
     QSqlDatabase CamTrapDB;
-    QMessageBox msgBox;
+
+private:
     void checkDBConnection(QSqlDatabase *db);
+    QString setQuery(QString query_init = "", QList<QString> columnlist = QList<QString> (), QList<QString> valuelist = QList<QString> ());
+    QString setQuery(QString query_init = "", QMap<QString, QString> set_map = QMap<QString, QString> {},  QMap<QString, QString> where_map = QMap<QString, QString> {});
 
 };
 
