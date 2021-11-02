@@ -31,7 +31,7 @@ private:
     QSqlDatabase CamTrapDB;
 
 private:
-    void checkDBConnection(QSqlDatabase *db);
+    void checkDBConnection();
     QString setQuery(QString query_init = "", QList<QString> columnlist = QList<QString> (), QList<QString> valuelist = QList<QString> ());
     QString setQuery(QString query_init = "", QMap<QString, QString> set_map = QMap<QString, QString> {},  QMap<QString, QString> where_map = QMap<QString, QString> {});
 

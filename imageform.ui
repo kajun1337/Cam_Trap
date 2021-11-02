@@ -361,9 +361,9 @@ color: #278079;</string>
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>0</y>
-           <width>155</width>
-           <height>341</height>
+           <y>-53</y>
+           <width>141</width>
+           <height>327</height>
           </rect>
          </property>
          <attribute name="icon">
@@ -664,8 +664,8 @@ color: #278079;</string>
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>200</width>
-           <height>275</height>
+           <width>170</width>
+           <height>274</height>
           </rect>
          </property>
          <attribute name="icon">
@@ -785,7 +785,14 @@ color: #278079;</string>
               </widget>
              </item>
              <item>
-              <widget class="QComboBox" name="comboBox_sca"/>
+              <widget class="QComboBox" name="comboBox_sca">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+              </widget>
              </item>
             </layout>
            </widget>
@@ -873,7 +880,7 @@ color: #278079;</string>
            <x>0</x>
            <y>0</y>
            <width>158</width>
-           <height>271</height>
+           <height>274</height>
           </rect>
          </property>
          <attribute name="icon">

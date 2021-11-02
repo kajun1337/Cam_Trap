@@ -4,7 +4,7 @@ DatabaseConnector::DatabaseConnector(QObject *parent) : QObject(parent)
 {
     CamTrapDB = QSqlDatabase::addDatabase("QSQLITE");
     CamTrapDB.setDatabaseName("../Cam_Trap/CamTrapDB.db");
-    checkDBConnection(&CamTrapDB);
+    checkDBConnection();
 }
 
 
@@ -13,9 +13,9 @@ DatabaseConnector::~DatabaseConnector()
     CamTrapDB.close();
 }
 
-void DatabaseConnector::checkDBConnection(QSqlDatabase *db)
+void DatabaseConnector::checkDBConnection()
 {
-    if(db->open())
+    if(CamTrapDB.open())
     {
         qInfo() << "Connected to Database" << this;
     }
@@ -63,7 +63,7 @@ QString DatabaseConnector::setQuery(QString query_init, QMap<QString, QString> s
         else
             query_init = query_init + " WHERE " + where_map.lastKey() + "='" + where_map.last() + "'";
     }
-    qInfo() << query_init;
+
     return query_init;
 }
 

@@ -24,23 +24,32 @@ class ImageForm : public QWidget
 public:
     explicit ImageForm(QWidget *parent = nullptr, QList<QString> photo_info = QList<QString> ());
     ~ImageForm();
+    void setComboBoxCamera(QList<QString> camlist);
+    void setComboxAnimal(QList<QString> anmlist);
 
 private slots:
     void on_pushButton_settings_clicked();
 
     void on_pushButton_edit_note_clicked();
 
+    void on_pushButton_sc_b_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_commandLinkButton_pn_clicked();
+
+    void on_pushButton_fav_clicked();
+
 private:
     Ui::ImageForm *ui;
     QList<QString> photo_infos;
+    QString photo_name;
 
 private:
     void setCentralWidget();
     void setPhotoFrame();
     void setNoteFrame();
     void setSettingFrame();
-    void setComboBoxCamera(QList<QString> camlist);
-    void setComboxAnimal(QList<QString> anmlist);
 };
 
 #endif // IMAGEFORM_H

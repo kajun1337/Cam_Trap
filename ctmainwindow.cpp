@@ -13,7 +13,6 @@ CTMainWindow::CTMainWindow(QWidget *parent)
 CTMainWindow::~CTMainWindow()
 {
     delete ui;
-    delete db;
 }
 
 
@@ -39,9 +38,12 @@ void CTMainWindow::setCentralWidget()
 void CTMainWindow::setMainFrame()
 {
     //Set the main frame add the photos into gridLayout
+    DatabaseConnector *db = new DatabaseConnector();
     QString query_c = " LIMIT " + QString::number(page_id * (page_id - 1) * 15) + "," +
                                   QString::number(page_id * (page_id + 1) * 15);
     photo_info = db->selectDB("Fotograflar", 0, query_c);
+    delete db;
+    db = nullptr;
     if(!photo_info.isEmpty())
     {
         setGridLayout();
@@ -52,8 +54,11 @@ void CTMainWindow::setMainFrame()
 
 void CTMainWindow::setMenuFrame()
 {
+    DatabaseConnector *db = new DatabaseConnector();
     setComboBoxCamera(db->selectDB("Makineler", 1, ""));
     setComboxAnimal(db->selectDB("Hayvanlar", 1, ""));
+    delete db;
+    db = nullptr;
 }
 
 void CTMainWindow::setUserFrame()
@@ -85,10 +90,15 @@ void CTMainWindow::setGridLayout()
         {
             if(photo_info.length() > c)
             {
+                DatabaseConnector *db = new DatabaseConnector();
                 QList<QString> photo_infos = db->selectAllDB("Fotograflar", " WHERE FotografID='" +
                                                              photo_info.at(c) + "'", 8);
                 ImageForm *imageui = new ImageForm(nullptr, photo_infos);
+                imageui->setComboBoxCamera(db->selectDB("Makineler", 1, ""));
+                imageui->setComboxAnimal(db->selectDB("Hayvanlar", 1, ""));
                 ui->gridLayout->addWidget(imageui, i, j);
+                delete db;
+                db = nullptr;
                 c++;
             }
             else
@@ -107,12 +117,15 @@ void CTMainWindow::on_commandLinkButton_tb_pp_clicked()
                                                             QMessageBox::Yes | QMessageBox::No);
     if(res == QMessageBox::Yes)
     {
+        DatabaseConnector *db = new DatabaseConnector();
         where_map.insert("MakineAdi", ui->comboBox_pp_cf->currentText());
         where_map.insert("Tarih", ui->dateEdit_pp_df->date().toString());
         where_map.insert("Hayvanlar", ui->comboBox_pp_af->currentText());
         where_map.insert("Konum", ui->lineEdit_tb_pp_lf->text());
 
         photo_info = db->whereDB("Fotograflar", 0, where_map);
+        delete db;
+        db = nullptr;
         //Set the main frame
     }
     else
@@ -139,10 +152,15 @@ void CTMainWindow::on_commandLinkButton_tb_ap_clicked()
             item_ap.append(ui->comboBox_ap_af->currentText());
             item_ap.append(ui->lineEdit_tb_ap_al->text());
             //Insert photo to DB
-            if(db->insertDB("Fotograflar", column_ap, item_ap))
+            DatabaseConnector *db = new DatabaseConnector();
+            if(db->insertDB("Fotograflar", column_ap, item_ap))      
+            {
                 //do something -> if main frame is empty, add the new photo in to gridLayout, maybe reset the main frame to previous condition
                 file_path = "";
-                ui->label_ap_f->setText(file_path);
+                ui->label_ap_f->setText(file_path);               
+            }
+            delete db;
+            db = nullptr;
         }
         else
             QMessageBox::critical(this, "HATA", "Dosya Secimi Yapilmali!");
@@ -169,6 +187,7 @@ void CTMainWindow::on_commandLinkButton_cs_cc_cc_clicked()
             set_map.insert("MakineAdi", ui->lineEdit_cs_cc_cc->text());
             set_map.insert("MakineKonum", ui->lineEdit_cs_cc_cl->text());
             //Update camera from DB
+            DatabaseConnector *db = new DatabaseConnector();
             if(db->updateDB("Makineler", set_map, where_map))
             {
                 //Remove old camera name camera comboBoxes
@@ -182,6 +201,8 @@ void CTMainWindow::on_commandLinkButton_cs_cc_cc_clicked()
                 ui->comboBox_cs_cc_cc->addItem(ui->lineEdit_cs_cc_cc->text());
                 ui->comboBox_ap_cf_2->addItem(ui->lineEdit_cs_cc_cc->text());
             }
+            delete db;
+            db = nullptr;
         }
         else
             QMessageBox::critical(this, "HATA", "Kamera Adi Bos Olmamali!");
@@ -202,6 +223,7 @@ void CTMainWindow::on_commandLinkButton_ac_clicked()
         item_a.append(ui->lineEdit_cam_name->text());
         item_a.append(ui->lineEdit_cs_ac_al->text());
         //Insert to DB
+        DatabaseConnector *db = new DatabaseConnector();
         if(db->insertDB("Makineler", column_a, item_a))
         {
              ui->comboBox_pp_cf->addItem(ui->lineEdit_cam_name->text());
@@ -209,6 +231,8 @@ void CTMainWindow::on_commandLinkButton_ac_clicked()
              ui->comboBox_cs_cc_cc->addItem(ui->lineEdit_cam_name->text());
              ui->comboBox_ap_cf_2->addItem(ui->lineEdit_cam_name->text());
         }
+        delete db;
+        db = nullptr;
     }
     else
         QMessageBox::critical(this, "HATA", "Kamera Adi Bos Olmamali!");
@@ -226,6 +250,7 @@ void CTMainWindow::on_commandLinkButton_rc_clicked()
     if(res == QMessageBox::Yes)
     {
         //Delete from db
+        DatabaseConnector *db = new DatabaseConnector();
         if(db->deleteDB("Makineler", "MakineAdi", cb_text))
         {
             ui->comboBox_pp_cf->removeItem(cb_index);
@@ -233,6 +258,8 @@ void CTMainWindow::on_commandLinkButton_rc_clicked()
             ui->comboBox_cs_cc_cc->removeItem(cb_index);
             ui->comboBox_ap_cf_2->removeItem(cb_index);
         }
+        delete db;
+        db = nullptr;
     }
     else
         return ;
@@ -249,12 +276,15 @@ void CTMainWindow::on_commandLinkButton_aa_clicked()
     {
         item_a.append(ui->lineEdit_an->text());
         //Insert to DB
+        DatabaseConnector *db = new DatabaseConnector();
         if(db->insertDB("Hayvanlar", column_a, item_a))
         {
              ui->comboBox_pp_af->addItem(ui->lineEdit_an->text());
              ui->comboBox_ap_af->addItem(ui->lineEdit_an->text());
              ui->comboBox_ra->addItem(ui->lineEdit_an->text());
         }
+        delete db;
+        db = nullptr;
     }
     else
         QMessageBox::critical(this, "HATA", "Hayvan Adi Bos Olmamali!");
@@ -273,12 +303,15 @@ void CTMainWindow::on_commandLinkButton_ra_clicked()
     if(res == QMessageBox::Yes)
     {
         //Delete from db
+        DatabaseConnector *db = new DatabaseConnector();
         if(db->deleteDB("Hayvanlar", "HayvanAdi", cb_text))
         {
             ui->comboBox_pp_af->removeItem(cb_index);
             ui->comboBox_ap_af->removeItem(cb_index);
             ui->comboBox_ra->removeItem(cb_index);
         }
+        delete db;
+        db = nullptr;
     }
     else
         return ;

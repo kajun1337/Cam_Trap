@@ -53,7 +53,6 @@ private slots:
 
 private:
     Ui::CTMainWindow *ui;
-    DatabaseConnector *db = new DatabaseConnector();
     QList<QString> photo_info = QList<QString> ();
     QString file_path = "";
     unsigned int page_id;
