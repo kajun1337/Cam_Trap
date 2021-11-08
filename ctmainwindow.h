@@ -28,33 +28,23 @@ public:
 
 private slots:
     void on_pushButton_mu_mb_clicked();
-
     void on_pushButton_mu_ub_clicked();
-
     void on_commandLinkButton_tb_pp_clicked();
-
     void on_commandLinkButton_tb_ap_clicked();
-
     void on_commandLinkButton_cs_cc_cc_clicked();
-
     void on_commandLinkButton_ac_clicked();
-
     void on_commandLinkButton_rc_clicked();
-
     void on_commandLinkButton_aa_clicked();
-
     void on_commandLinkButton_ra_clicked();
-
     void on_pushButton_ap_ff_clicked();
-
     void on_pushButton_pg_bb_clicked();
-
     void on_pushButton_pg_fb_clicked();
 
 private:
     Ui::CTMainWindow *ui;
-    QList<QString> photo_info = QList<QString> ();
-    QString file_path = "";
+    QList<QString> photo_info;
+    QString file_path;
+    QList<ImageForm *> photos;
     unsigned int page_id;
 
 private:

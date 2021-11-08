@@ -31,7 +31,7 @@
 	border-radius: 30px;
 	background-color: #fefeff;
 }
-QTextEdit{
+QPlainTextEdit{
 	border-radius: 30px;
 	border: 2px solid #278079;
 }
@@ -109,62 +109,6 @@ QTextEdit{
     <number>9</number>
    </property>
    <item>
-    <widget class="QFrame" name="frame_photo_notes">
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_3">
-      <property name="spacing">
-       <number>0</number>
-      </property>
-      <property name="leftMargin">
-       <number>0</number>
-      </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
-      <item>
-       <widget class="QTextEdit" name="textEdit">
-        <property name="font">
-         <font>
-          <family>Century Gothic</family>
-         </font>
-        </property>
-        <property name="documentTitle">
-         <string/>
-        </property>
-        <property name="overwriteMode">
-         <bool>true</bool>
-        </property>
-        <property name="placeholderText">
-         <string>Not yaz...</string>
-        </property>
-       </widget>
-      </item>
-      <item alignment="Qt::AlignHCenter|Qt::AlignBottom">
-       <widget class="QCommandLinkButton" name="commandLinkButton_pn">
-        <property name="text">
-         <string>Notu Kaydet</string>
-        </property>
-        <property name="icon">
-         <iconset resource="icons_qrc.qrc">
-          <normaloff>:/turquoise/icons/turquoise-icons/save.svg</normaloff>:/turquoise/icons/turquoise-icons/save.svg</iconset>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
     <widget class="QFrame" name="frame_p">
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -174,7 +118,7 @@ QTextEdit{
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <property name="spacing">
-       <number>0</number>
+       <number>6</number>
       </property>
       <property name="leftMargin">
        <number>0</number>
@@ -189,49 +133,735 @@ QTextEdit{
        <number>0</number>
       </property>
       <item>
-       <widget class="QFrame" name="frame_photo">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
+       <widget class="QFrame" name="main_frame">
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
          <item>
-          <widget class="QLabel" name="photo">
+          <widget class="QFrame" name="frame_photo_notes">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QPlainTextEdit" name="plainTextEdit">
+              <property name="placeholderText">
+               <string>Not Yazın..</string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignHCenter|Qt::AlignBottom">
+             <widget class="QCommandLinkButton" name="commandLinkButton_pn">
+              <property name="text">
+               <string>Notu Kaydet</string>
+              </property>
+              <property name="icon">
+               <iconset resource="icons_qrc.qrc">
+                <normaloff>:/turquoise/icons/turquoise-icons/save.svg</normaloff>:/turquoise/icons/turquoise-icons/save.svg</iconset>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frame_photo">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <property name="text">
-            <string/>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
            </property>
-           <property name="scaledContents">
-            <bool>true</bool>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
            </property>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <widget class="QLabel" name="photo">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignBottom">
+             <widget class="QLabel" name="photo_name">
+              <property name="font">
+               <font>
+                <family>Century Gothic</family>
+                <pointsize>8</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </item>
-         <item alignment="Qt::AlignBottom">
-          <widget class="QLabel" name="photo_name">
-           <property name="font">
-            <font>
-             <family>Century Gothic</family>
-             <pointsize>8</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
+         <item>
+          <widget class="QFrame" name="frame_ps">
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
            </property>
-           <property name="text">
-            <string/>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
            </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_17">
+            <item>
+             <widget class="QToolBox" name="toolBox_ps">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Century Gothic</family>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: #fefeff;
+color: #278079;</string>
+              </property>
+              <property name="currentIndex">
+               <number>0</number>
+              </property>
+              <widget class="QWidget" name="page_1">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>-7</y>
+                 <width>247</width>
+                 <height>327</height>
+                </rect>
+               </property>
+               <attribute name="icon">
+                <iconset resource="icons_qrc.qrc">
+                 <normaloff>:/turquoise/icons/turquoise-icons/info.svg</normaloff>:/turquoise/icons/turquoise-icons/info.svg</iconset>
+               </attribute>
+               <attribute name="label">
+                <string>Bilgi</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="verticalLayout_4">
+                <item>
+                 <widget class="QFrame" name="frame_ps_n">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_4">
+                   <item alignment="Qt::AlignLeft">
+                    <widget class="QLabel" name="label_n_d">
+                     <property name="font">
+                      <font>
+                       <family>Century Gothic</family>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Ad:</string>
+                     </property>
+                     <property name="scaledContents">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_n">
+                     <property name="font">
+                      <font>
+                       <family>Century Gothic</family>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frame_ps_d">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_5">
+                   <item alignment="Qt::AlignLeft">
+                    <widget class="QLabel" name="label_d_d">
+                     <property name="font">
+                      <font>
+                       <family>Century Gothic</family>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Tarih:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_d">
+                     <property name="font">
+                      <font>
+                       <family>Century Gothic</family>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frame_ps_c">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_6">
+                   <item alignment="Qt::AlignLeft">
+                    <widget class="QLabel" name="label_c_d">
+                     <property name="font">
+                      <font>
+                       <family>Century Gothic</family>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Kamera:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_c">
+                     <property name="font">
+                      <font>
+                       <family>Century Gothic</family>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frame_ps_an">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_7">
+                   <item alignment="Qt::AlignLeft">
+                    <widget class="QLabel" name="label_an_d">
+                     <property name="font">
+                      <font>
+                       <family>Century Gothic</family>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Hayvan:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_an">
+                     <property name="font">
+                      <font>
+                       <family>Century Gothic</family>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frame_ps_l">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_15">
+                   <item alignment="Qt::AlignLeft">
+                    <widget class="QLabel" name="label_l">
+                     <property name="font">
+                      <font>
+                       <family>Century Gothic</family>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Konum:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_l_d">
+                     <property name="font">
+                      <font>
+                       <family>Century Gothic</family>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frame_ps_fav">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_8">
+                   <item alignment="Qt::AlignLeft">
+                    <widget class="QLabel" name="label_fav_d">
+                     <property name="font">
+                      <font>
+                       <family>Century Gothic</family>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Favori Durumu:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_fav">
+                     <property name="font">
+                      <font>
+                       <family>Century Gothic</family>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frame_ps_f">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_9">
+                   <item alignment="Qt::AlignLeft">
+                    <widget class="QLabel" name="label_f_d">
+                     <property name="font">
+                      <font>
+                       <family>Century Gothic</family>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Dosya:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_1f">
+                     <property name="font">
+                      <font>
+                       <family>Century Gothic</family>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="page_2">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>261</width>
+                 <height>274</height>
+                </rect>
+               </property>
+               <attribute name="icon">
+                <iconset resource="icons_qrc.qrc">
+                 <normaloff>:/turquoise/icons/turquoise-icons/edit-3.svg</normaloff>:/turquoise/icons/turquoise-icons/edit-3.svg</iconset>
+               </attribute>
+               <attribute name="label">
+                <string>Bilgileri Düzenle</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="verticalLayout_6">
+                <item>
+                 <widget class="QFrame" name="frame_sd">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_11">
+                   <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
+                    <widget class="QLabel" name="label_sd_i">
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="pixmap">
+                      <pixmap resource="icons_qrc.qrc">:/turquoise/icons/turquoise-icons/calendar.svg</pixmap>
+                     </property>
+                     <property name="wordWrap">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QDateEdit" name="dateEdit_sd">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="date">
+                      <date>
+                       <year>2021</year>
+                       <month>10</month>
+                       <day>26</day>
+                      </date>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frame_sc">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_12">
+                   <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
+                    <widget class="QLabel" name="label_sc_i">
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="pixmap">
+                      <pixmap resource="icons_qrc.qrc">:/turquoise/icons/turquoise-icons/camera.svg</pixmap>
+                     </property>
+                     <property name="scaledContents">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QComboBox" name="comboBox_sc">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frame_sca">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_13">
+                   <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
+                    <widget class="QLabel" name="label_sca_i">
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="pixmap">
+                      <pixmap resource="icons_qrc.qrc">:/turquoise/icons/turquoise-icons/twitter.svg</pixmap>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QComboBox" name="comboBox_sca">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frame_sc_l">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_16">
+                   <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
+                    <widget class="QLabel" name="label_sc_l">
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="pixmap">
+                      <pixmap resource="icons_qrc.qrc">:/turquoise/icons/turquoise-icons/map-pin.svg</pixmap>
+                     </property>
+                     <property name="scaledContents">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="lineEdit_sc_l">
+                     <property name="font">
+                      <font>
+                       <family>Century Gothic</family>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="placeholderText">
+                      <string>Konumu Değiştir</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frame_sc_b">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_14">
+                   <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
+                    <widget class="QPushButton" name="pushButton_sc_b">
+                     <property name="font">
+                      <font>
+                       <family>Century Gothic</family>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Değişiklikleri Kaydet</string>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="icons_qrc.qrc">
+                       <normaloff>:/turquoise/icons/turquoise-icons/save.svg</normaloff>:/turquoise/icons/turquoise-icons/save.svg</iconset>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="page_3">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>261</width>
+                 <height>224</height>
+                </rect>
+               </property>
+               <attribute name="icon">
+                <iconset resource="icons_qrc.qrc">
+                 <normaloff>:/turquoise/icons/turquoise-icons/trash-2.svg</normaloff>:/turquoise/icons/turquoise-icons/trash-2.svg</iconset>
+               </attribute>
+               <attribute name="label">
+                <string>Sil</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="verticalLayout_5">
+                <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+                 <widget class="QFrame" name="frame_rp_b">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_10">
+                   <item>
+                    <widget class="QPushButton" name="pushButton">
+                     <property name="font">
+                      <font>
+                       <family>Century Gothic</family>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Sil</string>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="icons_qrc.qrc">
+                       <normaloff>:/turquoise/icons/turquoise-icons/trash.svg</normaloff>:/turquoise/icons/turquoise-icons/trash.svg</iconset>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </item>
         </layout>
@@ -327,602 +957,6 @@ QTextEdit{
           </widget>
          </item>
         </layout>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="QFrame" name="frame_ps">
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_7">
-      <item>
-       <widget class="QToolBox" name="toolBox_ps">
-        <property name="font">
-         <font>
-          <family>Century Gothic</family>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: #fefeff;
-color: #278079;</string>
-        </property>
-        <property name="currentIndex">
-         <number>0</number>
-        </property>
-        <widget class="QWidget" name="page_1">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>-53</y>
-           <width>141</width>
-           <height>327</height>
-          </rect>
-         </property>
-         <attribute name="icon">
-          <iconset resource="icons_qrc.qrc">
-           <normaloff>:/turquoise/icons/turquoise-icons/info.svg</normaloff>:/turquoise/icons/turquoise-icons/info.svg</iconset>
-         </attribute>
-         <attribute name="label">
-          <string>Bilgi</string>
-         </attribute>
-         <layout class="QVBoxLayout" name="verticalLayout_4">
-          <item>
-           <widget class="QFrame" name="frame_ps_n">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_4">
-             <item alignment="Qt::AlignLeft">
-              <widget class="QLabel" name="label_n_d">
-               <property name="font">
-                <font>
-                 <family>Century Gothic</family>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Ad:</string>
-               </property>
-               <property name="scaledContents">
-                <bool>false</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_n">
-               <property name="font">
-                <font>
-                 <family>Century Gothic</family>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="frame_ps_d">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_5">
-             <item alignment="Qt::AlignLeft">
-              <widget class="QLabel" name="label_d_d">
-               <property name="font">
-                <font>
-                 <family>Century Gothic</family>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Tarih:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_d">
-               <property name="font">
-                <font>
-                 <family>Century Gothic</family>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="frame_ps_c">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_6">
-             <item alignment="Qt::AlignLeft">
-              <widget class="QLabel" name="label_c_d">
-               <property name="font">
-                <font>
-                 <family>Century Gothic</family>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Kamera:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_c">
-               <property name="font">
-                <font>
-                 <family>Century Gothic</family>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="frame_ps_an">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_7">
-             <item alignment="Qt::AlignLeft">
-              <widget class="QLabel" name="label_an_d">
-               <property name="font">
-                <font>
-                 <family>Century Gothic</family>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Hayvan:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_an">
-               <property name="font">
-                <font>
-                 <family>Century Gothic</family>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="frame_ps_l">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_15">
-             <item alignment="Qt::AlignLeft">
-              <widget class="QLabel" name="label_l">
-               <property name="font">
-                <font>
-                 <family>Century Gothic</family>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Konum:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_l_d">
-               <property name="font">
-                <font>
-                 <family>Century Gothic</family>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="frame_ps_fav">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_8">
-             <item alignment="Qt::AlignLeft">
-              <widget class="QLabel" name="label_fav_d">
-               <property name="font">
-                <font>
-                 <family>Century Gothic</family>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Favori Durumu:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_fav">
-               <property name="font">
-                <font>
-                 <family>Century Gothic</family>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="frame_ps_f">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_9">
-             <item alignment="Qt::AlignLeft">
-              <widget class="QLabel" name="label_f_d">
-               <property name="font">
-                <font>
-                 <family>Century Gothic</family>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Dosya:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_1f">
-               <property name="font">
-                <font>
-                 <family>Century Gothic</family>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="page_2">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>170</width>
-           <height>274</height>
-          </rect>
-         </property>
-         <attribute name="icon">
-          <iconset resource="icons_qrc.qrc">
-           <normaloff>:/turquoise/icons/turquoise-icons/edit-3.svg</normaloff>:/turquoise/icons/turquoise-icons/edit-3.svg</iconset>
-         </attribute>
-         <attribute name="label">
-          <string>Bilgileri Düzenle</string>
-         </attribute>
-         <layout class="QVBoxLayout" name="verticalLayout_6">
-          <item>
-           <widget class="QFrame" name="frame_sd">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_11">
-             <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
-              <widget class="QLabel" name="label_sd_i">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="pixmap">
-                <pixmap resource="icons_qrc.qrc">:/turquoise/icons/turquoise-icons/calendar.svg</pixmap>
-               </property>
-               <property name="wordWrap">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QDateEdit" name="dateEdit_sd">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="date">
-                <date>
-                 <year>2021</year>
-                 <month>10</month>
-                 <day>26</day>
-                </date>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="frame_sc">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_12">
-             <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
-              <widget class="QLabel" name="label_sc_i">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="pixmap">
-                <pixmap resource="icons_qrc.qrc">:/turquoise/icons/turquoise-icons/camera.svg</pixmap>
-               </property>
-               <property name="scaledContents">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="comboBox_sc">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="frame_sca">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_13">
-             <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
-              <widget class="QLabel" name="label_sca_i">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="pixmap">
-                <pixmap resource="icons_qrc.qrc">:/turquoise/icons/turquoise-icons/twitter.svg</pixmap>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="comboBox_sca">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="frame_sc_l">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_16">
-             <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
-              <widget class="QLabel" name="label_sc_l">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="pixmap">
-                <pixmap resource="icons_qrc.qrc">:/turquoise/icons/turquoise-icons/map-pin.svg</pixmap>
-               </property>
-               <property name="scaledContents">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_sc_l">
-               <property name="font">
-                <font>
-                 <family>Century Gothic</family>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="placeholderText">
-                <string>Konumu Değiştir</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="frame_sc_b">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_14">
-             <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
-              <widget class="QPushButton" name="pushButton_sc_b">
-               <property name="font">
-                <font>
-                 <family>Century Gothic</family>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Değişiklikleri Kaydet</string>
-               </property>
-               <property name="icon">
-                <iconset resource="icons_qrc.qrc">
-                 <normaloff>:/turquoise/icons/turquoise-icons/save.svg</normaloff>:/turquoise/icons/turquoise-icons/save.svg</iconset>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="page_3">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>158</width>
-           <height>274</height>
-          </rect>
-         </property>
-         <attribute name="icon">
-          <iconset resource="icons_qrc.qrc">
-           <normaloff>:/turquoise/icons/turquoise-icons/trash-2.svg</normaloff>:/turquoise/icons/turquoise-icons/trash-2.svg</iconset>
-         </attribute>
-         <attribute name="label">
-          <string>Sil</string>
-         </attribute>
-         <layout class="QVBoxLayout" name="verticalLayout_5">
-          <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-           <widget class="QFrame" name="frame_rp_b">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_10">
-             <item>
-              <widget class="QPushButton" name="pushButton">
-               <property name="font">
-                <font>
-                 <family>Century Gothic</family>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Sil</string>
-               </property>
-               <property name="icon">
-                <iconset resource="icons_qrc.qrc">
-                 <normaloff>:/turquoise/icons/turquoise-icons/trash.svg</normaloff>:/turquoise/icons/turquoise-icons/trash.svg</iconset>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
        </widget>
       </item>
      </layout>

@@ -18,12 +18,14 @@ ImageForm::~ImageForm()
 void ImageForm::on_pushButton_settings_clicked()
 {
     ui->frame_ps->setVisible(ui->pushButton_settings->isChecked());
+    ui->frame_photo->setVisible(!ui->pushButton_settings->isChecked());
 }
 
 
 void ImageForm::on_pushButton_edit_note_clicked()
 {
     ui->frame_photo_notes->setVisible(ui->pushButton_edit_note->isChecked());
+    ui->frame_photo->setVisible(!ui->pushButton_edit_note->isChecked());
 }
 
 void ImageForm::setCentralWidget()
@@ -65,6 +67,8 @@ void ImageForm::setSettingFrame()
     ui->label_l_d->setText(photo_infos.at(7));
     ui->label_fav->setText(photo_infos.at(5));
     ui->label_1f->setText(photo_infos.at(3));
+
+    ui->dateEdit_sd->setDate(QDate::currentDate());
 }
 
 void ImageForm::setComboBoxCamera(QList<QString> camlist)

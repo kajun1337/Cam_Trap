@@ -39,8 +39,9 @@ void CTMainWindow::setMainFrame()
 {
     //Set the main frame add the photos into gridLayout
     DatabaseConnector *db = new DatabaseConnector();
-    QString query_c = " LIMIT " + QString::number(page_id * (page_id - 1) * 15) + "," +
-                                  QString::number(page_id * (page_id + 1) * 15);
+    unsigned int limit_min = (page_id == 1) ? 0 : (page_id - 1) * 8;
+    unsigned int limit_max = (page_id == 1) ? 8 : (page_id + 1) * 8;
+    QString query_c = " LIMIT " + QString::number(limit_min) + "," + QString::number(limit_max);
     photo_info = db->selectDB("Fotograflar", 0, query_c);
     delete db;
     db = nullptr;
@@ -54,6 +55,9 @@ void CTMainWindow::setMainFrame()
 
 void CTMainWindow::setMenuFrame()
 {
+    ui->dateEdit_ap_df->setDate(QDate::currentDate());
+    ui->dateEdit_pp_df->setDate(QDate::currentDate());
+
     DatabaseConnector *db = new DatabaseConnector();
     setComboBoxCamera(db->selectDB("Makineler", 1, ""));
     setComboxAnimal(db->selectDB("Hayvanlar", 1, ""));
@@ -84,7 +88,11 @@ void CTMainWindow::setComboxAnimal(QList<QString> anmlist)
 void CTMainWindow::setGridLayout()
 {
     unsigned short int c = 0;
-    for (int i = 0; i < 4; i++)
+
+    qDeleteAll(photos);
+    photos.clear();
+
+    for (int i = 0; i < 2; i++)
     {
         for(int j = 0; j < 4; j++)
         {
@@ -94,6 +102,7 @@ void CTMainWindow::setGridLayout()
                 QList<QString> photo_infos = db->selectAllDB("Fotograflar", " WHERE FotografID='" +
                                                              photo_info.at(c) + "'", 8);
                 ImageForm *imageui = new ImageForm(nullptr, photo_infos);
+                photos.append(imageui);
                 imageui->setComboBoxCamera(db->selectDB("Makineler", 1, ""));
                 imageui->setComboxAnimal(db->selectDB("Hayvanlar", 1, ""));
                 ui->gridLayout->addWidget(imageui, i, j);

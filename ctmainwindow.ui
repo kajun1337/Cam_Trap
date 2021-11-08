@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1000</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -191,6 +191,12 @@ QComboBox{
     </property>
     <item>
      <widget class="QFrame" name="menu_frame">
+      <property name="minimumSize">
+       <size>
+        <width>300</width>
+        <height>0</height>
+       </size>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(39, 128, 121);</string>
       </property>
@@ -297,8 +303,8 @@ QComboBox{
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>270</width>
-               <height>355</height>
+               <width>282</width>
+               <height>591</height>
               </rect>
              </property>
              <property name="minimumSize">
@@ -659,8 +665,8 @@ QComboBox{
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>269</width>
-               <height>403</height>
+               <width>282</width>
+               <height>591</height>
               </rect>
              </property>
              <attribute name="icon">
@@ -1078,8 +1084,8 @@ QComboBox{
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>270</width>
-               <height>355</height>
+               <width>282</width>
+               <height>591</height>
               </rect>
              </property>
              <attribute name="icon">
@@ -1141,8 +1147,8 @@ QComboBox{
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>270</width>
-                      <height>272</height>
+                      <width>282</width>
+                      <height>516</height>
                      </rect>
                     </property>
                     <attribute name="icon">
@@ -1171,8 +1177,8 @@ QComboBox{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>263</width>
-                          <height>254</height>
+                          <width>264</width>
+                          <height>408</height>
                          </rect>
                         </property>
                         <attribute name="icon">
@@ -1396,7 +1402,7 @@ QComboBox{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>235</width>
+                          <width>231</width>
                           <height>203</height>
                          </rect>
                         </property>
@@ -1544,8 +1550,8 @@ QComboBox{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>252</width>
-                          <height>155</height>
+                          <width>231</width>
+                          <height>151</height>
                          </rect>
                         </property>
                         <attribute name="icon">
@@ -1670,8 +1676,8 @@ QComboBox{
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>270</width>
-                      <height>272</height>
+                      <width>86</width>
+                      <height>146</height>
                      </rect>
                     </property>
                     <attribute name="icon">
@@ -1700,8 +1706,8 @@ QComboBox{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>252</width>
-                          <height>188</height>
+                          <width>231</width>
+                          <height>151</height>
                          </rect>
                         </property>
                         <attribute name="icon">
@@ -1810,8 +1816,8 @@ QComboBox{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>252</width>
-                          <height>188</height>
+                          <width>231</width>
+                          <height>151</height>
                          </rect>
                         </property>
                         <attribute name="icon">
@@ -2322,6 +2328,12 @@ QComboBox{
     </item>
     <item alignment="Qt::AlignTop">
      <widget class="QFrame" name="user_frame">
+      <property name="minimumSize">
+       <size>
+        <width>200</width>
+        <height>0</height>
+       </size>
+      </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
       </property>
