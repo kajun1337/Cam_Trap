@@ -297,7 +297,7 @@ color: #278079;</string>
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>-7</y>
+                 <y>0</y>
                  <width>247</width>
                  <height>327</height>
                 </rect>
@@ -600,7 +600,7 @@ color: #278079;</string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>261</width>
+                 <width>247</width>
                  <height>274</height>
                 </rect>
                </property>
@@ -903,7 +903,7 @@ color: #278079;</string>
            </property>
            <property name="icon">
             <iconset resource="icons_qrc.qrc">
-             <normaloff>:/turquoise/icons/turquoise-icons/maximize-2.svg</normaloff>:/turquoise/icons/turquoise-icons/maximize-2.svg</iconset>
+             <normaloff>:/turquoise/icons/turquoise-icons/external-link.svg</normaloff>:/turquoise/icons/turquoise-icons/external-link.svg</iconset>
            </property>
            <property name="iconSize">
             <size>

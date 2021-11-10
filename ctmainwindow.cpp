@@ -6,6 +6,7 @@ CTMainWindow::CTMainWindow(QWidget *parent)
     , ui(new Ui::CTMainWindow)
 {
     page_id = 1;
+    select = false;
     ui->setupUi(this);
     setCentralWidget();
 }
@@ -30,21 +31,80 @@ void CTMainWindow::setCentralWidget()
 {
     ui->menu_frame->hide();
     ui->user_frame->hide();
+
     setMenuFrame();
     setMainFrame();
+
     ui->label_pg->setText(QString::number(page_id));
+    ui->pushButton_leave_select->hide();
+}
+
+void CTMainWindow::setPhotoInfo()
+{
+    unsigned int limit_min = (page_id == 1) ? 0 : (page_id - 1) * 8;
+    unsigned int limit_max = (page_id == 1) ? 8 : (page_id + 1) * 8;
+    if(select)
+    {
+        photo_info.clear();
+        for(int i = limit_min; i < limit_max; i++)
+        {
+            if(!select_photo_info.value(i).isNull())
+            {
+                photo_info.append(select_photo_info.value(i));
+            }
+            else
+                return ;
+        }
+    }
+    else
+    {
+        DatabaseConnector *db = new DatabaseConnector();
+        QString query_c = " LIMIT " + QString::number(limit_min) + "," + QString::number(limit_max);
+        photo_info.clear();
+        photo_info = db->selectDB("Fotograflar", 0, query_c);
+        delete db;
+        db = nullptr;
+    }
+}
+
+bool CTMainWindow::checkFolderPath()
+{
+    bool result = false;
+    QMap<QString, QString> where_map;
+    where_map.insert("FotoVeriYolu", file_path);
+    DatabaseConnector *db = new DatabaseConnector();
+    if(db->whereDB("Fotograflar", 0, where_map).isEmpty())
+    {
+        result = true;
+    }
+    else
+        QMessageBox::critical(this, "HATA", "Secilen Dosya Zaten Kayitli!");
+
+    delete db;
+    db = nullptr;
+
+    return result;
+}
+
+QString CTMainWindow::setPhotoName()
+{
+    QString photo_name = "";
+
+    for(unsigned short int i = file_path.length() - 1; i > 0; i--)
+    {
+        if(file_path[i] != '/')
+            photo_name.push_front(file_path[i]);
+        else
+            break ;
+    }
+
+    return photo_name;
 }
 
 void CTMainWindow::setMainFrame()
 {
     //Set the main frame add the photos into gridLayout
-    DatabaseConnector *db = new DatabaseConnector();
-    unsigned int limit_min = (page_id == 1) ? 0 : (page_id - 1) * 8;
-    unsigned int limit_max = (page_id == 1) ? 8 : (page_id + 1) * 8;
-    QString query_c = " LIMIT " + QString::number(limit_min) + "," + QString::number(limit_max);
-    photo_info = db->selectDB("Fotograflar", 0, query_c);
-    delete db;
-    db = nullptr;
+    setPhotoInfo();
     if(!photo_info.isEmpty())
     {
         setGridLayout();
@@ -63,11 +123,6 @@ void CTMainWindow::setMenuFrame()
     setComboxAnimal(db->selectDB("Hayvanlar", 1, ""));
     delete db;
     db = nullptr;
-}
-
-void CTMainWindow::setUserFrame()
-{
-    //Set the user button actions
 }
 
 void CTMainWindow::setComboBoxCamera(QList<QString> camlist)
@@ -100,8 +155,8 @@ void CTMainWindow::setGridLayout()
             {
                 DatabaseConnector *db = new DatabaseConnector();
                 QList<QString> photo_infos = db->selectAllDB("Fotograflar", " WHERE FotografID='" +
-                                                             photo_info.at(c) + "'", 8);
-                ImageForm *imageui = new ImageForm(nullptr, photo_infos);
+                                                             photo_info.at(c) + "'", 9);
+                ImageForm *imageui = new ImageForm(this, photo_infos);
                 photos.append(imageui);
                 imageui->setComboBoxCamera(db->selectDB("Makineler", 1, ""));
                 imageui->setComboxAnimal(db->selectDB("Hayvanlar", 1, ""));
@@ -116,7 +171,6 @@ void CTMainWindow::setGridLayout()
     }
 }
 
-
 void CTMainWindow::on_commandLinkButton_tb_pp_clicked()
 {
     //Filter button
@@ -129,13 +183,25 @@ void CTMainWindow::on_commandLinkButton_tb_pp_clicked()
         DatabaseConnector *db = new DatabaseConnector();
         where_map.insert("MakineAdi", ui->comboBox_pp_cf->currentText());
         where_map.insert("Tarih", ui->dateEdit_pp_df->date().toString());
-        where_map.insert("Hayvanlar", ui->comboBox_pp_af->currentText());
+        where_map.insert("HayvanAdi", ui->comboBox_pp_af->currentText());
         where_map.insert("Konum", ui->lineEdit_tb_pp_lf->text());
 
-        photo_info = db->whereDB("Fotograflar", 0, where_map);
+        select_photo_info.clear();
+        select_photo_info = db->whereDB("Fotograflar", 0, where_map);
+
         delete db;
         db = nullptr;
         //Set the main frame
+        if(!select_photo_info.isEmpty())
+        {
+            select = true;
+            page_id = 1;
+            ui->label_pg->setText(QString::number(page_id));
+            ui->pushButton_leave_select->setVisible(true);
+            setMainFrame();
+        }
+        else
+            QMessageBox::critical(this, "HATA", "Secilen Ozelliklerde Fotograf(lar) Bulunamadi!");
     }
     else
         return ;
@@ -146,7 +212,7 @@ void CTMainWindow::on_commandLinkButton_tb_ap_clicked()
 {
     //Add a new photo button
     QList<QString> column_ap, item_ap;
-    column_ap << "MakineAdi" << "Tarih" << "FotoVeriYolu" <<
+    column_ap << "FotoAdi" << "MakineAdi" << "Tarih" << "FotoVeriYolu" <<
                 "HayvanAdi" << "Konum";
     QString msg_text = "Secilen Fotograf: " + file_path + " Eklensin mi?";
     QMessageBox::StandardButton res = QMessageBox::question(this, "Fotograf Ekleme İslemi", msg_text,
@@ -155,6 +221,7 @@ void CTMainWindow::on_commandLinkButton_tb_ap_clicked()
     {
         if(file_path != "")
         {
+            item_ap.append(setPhotoName());
             item_ap.append(ui->comboBox_ap_cf->currentText());
             item_ap.append(ui->dateEdit_ap_df->date().toString());
             item_ap.append(file_path);
@@ -164,7 +231,7 @@ void CTMainWindow::on_commandLinkButton_tb_ap_clicked()
             DatabaseConnector *db = new DatabaseConnector();
             if(db->insertDB("Fotograflar", column_ap, item_ap))      
             {
-                //do something -> if main frame is empty, add the new photo in to gridLayout, maybe reset the main frame to previous condition
+                setMainFrame();
                 file_path = "";
                 ui->label_ap_f->setText(file_path);               
             }
@@ -331,7 +398,10 @@ void CTMainWindow::on_pushButton_ap_ff_clicked()
 {
     //Open the file dialog button
     file_path = QFileDialog::getOpenFileName(this, "Resim Secimi", "C://", "Resim Dosyalari (*.png *.jpg *.bmp)");
-    ui->label_ap_f->setText(file_path);
+    if(checkFolderPath())
+        ui->label_ap_f->setText(file_path);
+    else
+        file_path = "";
 }
 
 
@@ -359,5 +429,47 @@ void CTMainWindow::on_pushButton_pg_fb_clicked()
         page_id--;
     }
     ui->label_pg->setText(QString::number(page_id));
+}
+
+
+void CTMainWindow::on_pushButton_leave_select_clicked()
+{
+    page_id = 1;
+    ui->label_pg->setText(QString::number(page_id));
+    ui->pushButton_leave_select->hide();
+    select = false;
+    setMainFrame();
+}
+
+
+void CTMainWindow::on_commandLinkButton_uf_clicked()
+{
+    //Filter the favorite photos
+    QMap<QString, QString> where_map;
+    where_map.insert("Favori", "Evet");
+
+    DatabaseConnector *db = new DatabaseConnector();
+    select_photo_info.clear();
+    select_photo_info = db->whereDB("Fotograflar", 0, where_map);
+
+    delete db;
+    db = nullptr;
+    //Set the main frame
+    if(!select_photo_info.isEmpty())
+    {
+        select = true;
+        page_id = 1;
+        ui->label_pg->setText(QString::number(page_id));
+        ui->pushButton_leave_select->setVisible(true);
+        setMainFrame();
+    }
+    else
+        QMessageBox::critical(this, "HATA", "Secilen Ozelliklerde Fotograf(lar) Bulunamadi!");
+}
+
+
+void CTMainWindow::on_commandLinkButton_un_clicked()
+{
+
 }
 

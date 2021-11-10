@@ -38,19 +38,11 @@ void ImageForm::setCentralWidget()
 
 void ImageForm::setPhotoFrame()
 {
-    QString name = "", photo_p = photo_infos.at(3);
+    QString photo_p = photo_infos.at(4);
     QPixmap photo;
     photo.load(photo_p);
-    for(unsigned short int i = photo_p.length() - 1; i > 0; i--)
-    {
-        if(photo_p[i] != '/')
-            name.push_front(photo_p[i]);
-        else
-            break ;
-    }
-    photo_name = name;
     ui->photo->setPixmap(photo);
-    ui->photo_name->setText(name);
+    ui->photo_name->setText(photo_infos.at(1));
 }
 
 void ImageForm::setNoteFrame()
@@ -60,13 +52,13 @@ void ImageForm::setNoteFrame()
 
 void ImageForm::setSettingFrame()
 {
-    ui->label_n->setText(photo_name);
-    ui->label_d->setText(photo_infos.at(2));
-    ui->label_c->setText(photo_infos.at(1));
-    ui->label_an->setText(photo_infos.at(4));
-    ui->label_l_d->setText(photo_infos.at(7));
-    ui->label_fav->setText(photo_infos.at(5));
-    ui->label_1f->setText(photo_infos.at(3));
+    ui->label_n->setText(photo_infos.at(1));
+    ui->label_d->setText(photo_infos.at(3));
+    ui->label_c->setText(photo_infos.at(2));
+    ui->label_an->setText(photo_infos.at(5));
+    ui->label_l_d->setText(photo_infos.at(8));
+    ui->label_fav->setText(photo_infos.at(6));
+    ui->label_1f->setText(photo_infos.at(4));
 
     ui->dateEdit_sd->setDate(QDate::currentDate());
 }
@@ -90,8 +82,7 @@ void ImageForm::on_pushButton_sc_b_clicked()
     set_map.insert("MakineAdi", ui->comboBox_sc->currentText());
     set_map.insert("HayvanAdi", ui->comboBox_sca->currentText());
     set_map.insert("Konum", ui->lineEdit_sc_l->text());
-    QString photoName = photo_name;
-    QString msg_text = "Secilen Fotograf: " + photoName + " Guncellensin mi?";
+    QString msg_text = "Secilen Fotograf: " + photo_infos.at(1) + " Guncellensin mi?";
     where_map.insert("FotografID", photo_infos.at(0));
     QMessageBox::StandardButton res = QMessageBox::question(nullptr, "Fotograf Guncelleme İslemi", msg_text,
                                                             QMessageBox::Yes | QMessageBox::No);
@@ -104,6 +95,10 @@ void ImageForm::on_pushButton_sc_b_clicked()
         delete  db;
         db = nullptr;
         //Reset Photo infos
+        ui->label_d->setText(ui->dateEdit_sd->date().toString());
+        ui->label_c->setText(ui->comboBox_sc->currentText());
+        ui->label_an->setText(ui->comboBox_sca->currentText());
+        ui->label_l_d->setText(ui->lineEdit_sc_l->text());
     }
     else
         return ;
@@ -113,7 +108,7 @@ void ImageForm::on_pushButton_sc_b_clicked()
 void ImageForm::on_pushButton_clicked()
 {
     //Delete Photo actions
-    QString msg_text = "Secilen Fotograf: " + photo_name + " Silinsin mi?";
+    QString msg_text = "Secilen Fotograf: " + photo_infos.at(1) + " Silinsin mi?";
     QMessageBox::StandardButton res = QMessageBox::question(nullptr, "Fotograf Silme İslemi", msg_text,
                                                             QMessageBox::Yes | QMessageBox::No);
     if(res == QMessageBox::Yes)
@@ -140,16 +135,18 @@ void ImageForm::on_pushButton_fav_clicked()
 {
     //Add favorite to chosen photo
     QMap<QString, QString> set_map, where_map;
-    QString msg_text = "";
-    if(photo_infos.at(5) == "")
+    QString msg_text = "", status = "";
+    if(photo_infos.at(6) == "")
     {
-        set_map.insert("Favori", "Evet");
-        msg_text = "Secilen Fotograf: " + photo_name + " Favoriye Eklensin mi?";
+        status = "Evet";
+        set_map.insert("Favori", status);
+        msg_text = "Secilen Fotograf: " + photo_infos.at(1) + " Favoriye Eklensin mi?";
     }
     else
     {
-        set_map.insert("Favori", "");
-        msg_text = "Secilen Fotograf: " + photo_name + " Favoriden Cikarilsin mi?";
+        status = "";
+        set_map.insert("Favori", status);
+        msg_text = "Secilen Fotograf: " + photo_infos.at(1) + " Favoriden Cikarilsin mi?";
     }
     where_map.insert("FotografID", photo_infos.at(0));
     QMessageBox::StandardButton res = QMessageBox::question(nullptr, "Fotograf Favori İslemi", msg_text,
@@ -163,7 +160,14 @@ void ImageForm::on_pushButton_fav_clicked()
         delete  db;
         db = nullptr;
         //Reset Photo infos
+        ui->label_fav->setText(status);
     }
     else
         return ;
 }
+
+void ImageForm::on_pushButton_maxi_clicked()
+{
+    QDesktopServices::openUrl(QUrl::fromLocalFile(photo_infos.at(4)));
+}
+

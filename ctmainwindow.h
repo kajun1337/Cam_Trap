@@ -39,21 +39,28 @@ private slots:
     void on_pushButton_ap_ff_clicked();
     void on_pushButton_pg_bb_clicked();
     void on_pushButton_pg_fb_clicked();
+    void on_pushButton_leave_select_clicked();
+    void on_commandLinkButton_uf_clicked();
+    void on_commandLinkButton_un_clicked();
 
 private:
     Ui::CTMainWindow *ui;
     QList<QString> photo_info;
+    QList<QString> select_photo_info;
     QString file_path;
     QList<ImageForm *> photos;
     unsigned int page_id;
+    bool select;
 
 private:
     void setCentralWidget();
     void setMainFrame();
     void setMenuFrame();
-    void setUserFrame();
     void setComboBoxCamera(QList<QString> camlist);
     void setComboxAnimal(QList<QString> anmlist);
     void setGridLayout();
+    void setPhotoInfo();
+    bool checkFolderPath();
+    QString setPhotoName();
 };
 #endif // CTMAINWINDOW_H
