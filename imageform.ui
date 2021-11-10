@@ -188,6 +188,9 @@ QPlainTextEdit{
             </property>
             <item>
              <widget class="QPlainTextEdit" name="plainTextEdit">
+              <property name="plainText">
+               <string/>
+              </property>
               <property name="placeholderText">
                <string>Not Yazın..</string>
               </property>

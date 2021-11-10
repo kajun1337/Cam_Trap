@@ -34,6 +34,7 @@ void ImageForm::setCentralWidget()
     ui->frame_photo_notes->hide();
     setPhotoFrame();
     setSettingFrame();
+    setNoteFrame();
 }
 
 void ImageForm::setPhotoFrame()
@@ -47,7 +48,26 @@ void ImageForm::setPhotoFrame()
 
 void ImageForm::setNoteFrame()
 {
+    //Check the file and set the file
+    if(photo_infos[7] == "")
+    {
+        filename = "C:/Users/Tamer/Desktop/FotoKapanQt/Cam_Trap/Notlar/" + photo_infos[0] + ".txt";
+        QFile file(filename);
+    }
+    else
+    {
+        filename = photo_infos[7];
+        QFile file(filename);
 
+        if(!file.open(QIODevice::ReadWrite | QIODevice::Text))
+        {
+            qDebug() << filename << " is not open.";
+        }
+
+        QTextStream in(&file);
+        ui->plainTextEdit->setPlainText(in.readAll());
+        file.close();
+    }
 }
 
 void ImageForm::setSettingFrame()
@@ -119,6 +139,10 @@ void ImageForm::on_pushButton_clicked()
 
         delete  db;
         db = nullptr;
+
+        //Delete text file
+        QFile file(filename);
+        file.remove();
     }
     else
         return ;
@@ -128,6 +152,35 @@ void ImageForm::on_pushButton_clicked()
 void ImageForm::on_commandLinkButton_pn_clicked()
 {
     //Save Note
+    QMap<QString, QString> set_map, where_map;
+    where_map.insert("FotografID", photo_infos[0]);
+    QString msg_text = "Yazdiginiz Not Kaydedilsin mi?";
+    QMessageBox::StandardButton res = QMessageBox::question(nullptr, "Not Kayit İslemi", msg_text,
+                                                            QMessageBox::Yes | QMessageBox::No);
+    if(res == QMessageBox::Yes)
+    {
+        QFile file(filename);
+        if(!file.open(QIODevice::ReadWrite | QIODevice::Text))
+        {
+            QMessageBox::critical(nullptr, "HATA", "Not Dosyasi Acilamadi!!");
+            return ;
+        }
+        QTextStream out(&file);
+        out << ui->plainTextEdit->toPlainText();
+        file.flush();
+        file.close();
+
+        set_map.insert("NotVeriYolu", filename);
+        //Update the DB
+        DatabaseConnector *db = new DatabaseConnector();
+
+        db->updateDB("Fotograflar", set_map, where_map);
+
+        delete  db;
+        db = nullptr;
+    }
+    else
+        return ;
 }
 
 
@@ -155,11 +208,12 @@ void ImageForm::on_pushButton_fav_clicked()
     {
         DatabaseConnector *db = new DatabaseConnector();
 
-        db->updateDB("fotograflar", set_map, where_map);
+        db->updateDB("Fotograflar", set_map, where_map);
 
         delete  db;
         db = nullptr;
         //Reset Photo infos
+        photo_infos[6] = status;
         ui->label_fav->setText(status);
     }
     else

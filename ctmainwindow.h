@@ -6,13 +6,13 @@
 
 #include <QMainWindow>
 #include <QWidget>
-#include <QObject>
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QList>
 #include <QMap>
 #include <QSharedPointer>
 #include <QDebug>
+#include <QDesktopServices>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class CTMainWindow; }
@@ -42,6 +42,7 @@ private slots:
     void on_pushButton_leave_select_clicked();
     void on_commandLinkButton_uf_clicked();
     void on_commandLinkButton_un_clicked();
+    void on_lineEdit_mu_s_editingFinished();
 
 private:
     Ui::CTMainWindow *ui;

@@ -5,10 +5,9 @@
 
 #include <QWidget>
 #include <QWidget>
-#include <QObject>
 #include <QMessageBox>
 #include <QFile>
-#include <QDir>
+#include <QTextStream>
 #include <QProcess>
 #include <QPixmap>
 #include <QList>
@@ -42,6 +41,7 @@ private slots:
 private:
     Ui::ImageForm *ui;
     QList<QString> photo_infos;
+    QString filename;
 
 private:
     void setCentralWidget();

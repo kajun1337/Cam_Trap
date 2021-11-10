@@ -16,7 +16,6 @@ CTMainWindow::~CTMainWindow()
     delete ui;
 }
 
-
 void CTMainWindow::on_pushButton_mu_mb_clicked()
 {
     ui->menu_frame->setVisible(ui->pushButton_mu_mb->isChecked());
@@ -207,7 +206,6 @@ void CTMainWindow::on_commandLinkButton_tb_pp_clicked()
         return ;
 }
 
-
 void CTMainWindow::on_commandLinkButton_tb_ap_clicked()
 {
     //Add a new photo button
@@ -244,7 +242,6 @@ void CTMainWindow::on_commandLinkButton_tb_ap_clicked()
     else
         return ;
 }
-
 
 void CTMainWindow::on_commandLinkButton_cs_cc_cc_clicked()
 {
@@ -287,7 +284,6 @@ void CTMainWindow::on_commandLinkButton_cs_cc_cc_clicked()
         return ;
 }
 
-
 void CTMainWindow::on_commandLinkButton_ac_clicked()
 {
     //Add a new camera button
@@ -313,7 +309,6 @@ void CTMainWindow::on_commandLinkButton_ac_clicked()
     else
         QMessageBox::critical(this, "HATA", "Kamera Adi Bos Olmamali!");
 }
-
 
 void CTMainWindow::on_commandLinkButton_rc_clicked()
 {
@@ -341,7 +336,6 @@ void CTMainWindow::on_commandLinkButton_rc_clicked()
         return ;
 }
 
-
 void CTMainWindow::on_commandLinkButton_aa_clicked()
 {
     //Add a new animal button
@@ -366,7 +360,6 @@ void CTMainWindow::on_commandLinkButton_aa_clicked()
         QMessageBox::critical(this, "HATA", "Hayvan Adi Bos Olmamali!");
 
 }
-
 
 void CTMainWindow::on_commandLinkButton_ra_clicked()
 {
@@ -393,7 +386,6 @@ void CTMainWindow::on_commandLinkButton_ra_clicked()
         return ;
 }
 
-
 void CTMainWindow::on_pushButton_ap_ff_clicked()
 {
     //Open the file dialog button
@@ -403,7 +395,6 @@ void CTMainWindow::on_pushButton_ap_ff_clicked()
     else
         file_path = "";
 }
-
 
 void CTMainWindow::on_pushButton_pg_bb_clicked()
 {
@@ -418,7 +409,6 @@ void CTMainWindow::on_pushButton_pg_bb_clicked()
         return ;
 }
 
-
 void CTMainWindow::on_pushButton_pg_fb_clicked()
 {
     //Page forward button
@@ -431,16 +421,15 @@ void CTMainWindow::on_pushButton_pg_fb_clicked()
     ui->label_pg->setText(QString::number(page_id));
 }
 
-
 void CTMainWindow::on_pushButton_leave_select_clicked()
 {
+    //Leave the Selection Filter Frame
     page_id = 1;
     ui->label_pg->setText(QString::number(page_id));
     ui->pushButton_leave_select->hide();
     select = false;
     setMainFrame();
 }
-
 
 void CTMainWindow::on_commandLinkButton_uf_clicked()
 {
@@ -467,9 +456,34 @@ void CTMainWindow::on_commandLinkButton_uf_clicked()
         QMessageBox::critical(this, "HATA", "Secilen Ozelliklerde Fotograf(lar) Bulunamadi!");
 }
 
-
 void CTMainWindow::on_commandLinkButton_un_clicked()
 {
+    //Show the Notes Directory
+    QDesktopServices::openUrl(QUrl::fromLocalFile("../Cam_Trap/Notlar"));
+}
 
+void CTMainWindow::on_lineEdit_mu_s_editingFinished()
+{
+    //Search the lineEdit Text in the DB
+    QMap<QString, QString> where_map;
+    where_map.insert("FotoAdi", ui->lineEdit_mu_s->text());
+
+    DatabaseConnector *db = new DatabaseConnector();
+    select_photo_info.clear();
+    select_photo_info = db->whereDB("Fotograflar", 0, where_map);
+
+    delete db;
+    db = nullptr;
+    //Set the main frame
+    if(!select_photo_info.isEmpty())
+    {
+        select = true;
+        page_id = 1;
+        ui->label_pg->setText(QString::number(page_id));
+        ui->pushButton_leave_select->setVisible(true);
+        setMainFrame();
+    }
+    else
+        QMessageBox::critical(this, "HATA", "Girilen Isimde Fotograf Bulunamadi!");
 }
 

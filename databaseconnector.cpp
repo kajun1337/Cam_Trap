@@ -7,7 +7,6 @@ DatabaseConnector::DatabaseConnector(QObject *parent) : QObject(parent)
     checkDBConnection();
 }
 
-
 DatabaseConnector::~DatabaseConnector()
 {
     CamTrapDB.close();
