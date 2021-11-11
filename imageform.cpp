@@ -51,7 +51,7 @@ void ImageForm::setNoteFrame()
     //Check the file and set the file
     if(photo_infos[7] == "")
     {
-        filename = "C:/Users/Tamer/Desktop/FotoKapanQt/Cam_Trap/Notlar/" + photo_infos[0] + ".txt";
+        filename = "../Cam_Trap/Notlar/" + photo_infos[0] + ".txt";
         QFile file(filename);
     }
     else
