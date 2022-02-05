@@ -4,7 +4,6 @@
 
 #include <QApplication>
 #include <QtWidgets>
-#include <QSharedPointer>
 
 int main(int argc, char *argv[])
 {

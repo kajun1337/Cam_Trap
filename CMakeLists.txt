@@ -28,11 +28,11 @@ set(PROJECT_SOURCES
         imageform.ui
         databaseconnector.h
         databaseconnector.cpp
-        CamTrapDB.db
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Cam_Trap
+        WIN32
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
     )
